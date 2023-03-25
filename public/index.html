@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkMe Example</title>
+    <link rel="stylesheet" href="https://gtml.gavingogamingrepl.repl.co/regular-ass-style.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Input:</h1>
+    <textarea id="area" cols="60" rows="15"># Hey</textarea><br>
+    <input type="checkbox" id="code"> Uses Code?<br>
+    Code Theme: <input placeholder="code" value="atom-one-dark">
+    <h1>Result: <button id="btn">Generate</button></h1>
+    <pre><code id='res'></code></pre><br><br>
+    Live edit beta<br>
+    <div class="parent">
+        <div id="child1"></div>
+        <textarea cols="30" rows="10"></textarea>
+    </div>
+    <script>
+        document.querySelector('#btn').onclick = ()=>{
+            fetch("/mark", {
+                method: 'POST',
+                body: JSON.stringify({source: document.querySelector('#area').value}),
+                headers: {'Content-Type': 'application/json'}
+            }).then(res => res.json()).then(res => {
+                document.querySelector('#res').textContent = res.result;
+                hljs.highlightAll();
+            });
+        }
+        document.querySelector('#area').addEventListener('input', ()=>{
+            document.querySelector('#btn').click();
+        });
+    </script>
+</body>
+</html>

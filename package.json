@@ -1,0 +1,34 @@
+{
+  "name": "markme",
+  "version": "1.0.0",
+  "description": "A lightweight markdown API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mdapi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klashdevelopment/MarkMe.git"
+  },
+  "keywords": [
+    "markdown",
+    "md2html",
+    "md",
+    "html",
+    "markdown2html",
+    "md",
+    "html"
+  ],
+  "author": "GavinGoGaming",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/klashdevelopment/MarkMe/issues"
+  },
+  "homepage": "https://github.com/klashdevelopment/MarkMe#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "marked": "^4.2.12"
+  }
+}
