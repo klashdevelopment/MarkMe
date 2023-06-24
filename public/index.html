@@ -17,11 +17,8 @@
     Code Theme: <input placeholder="code" value="atom-one-dark">
     <h1>Result: <button id="btn">Generate</button></h1>
     <pre><code id='res'></code></pre><br><br>
-    Live edit beta<br>
-    <div class="parent">
-        <div id="child1"></div>
-        <textarea cols="30" rows="10"></textarea>
-    </div>
+    <h1>Preview</h1>
+    <div style="background-color: #222;" id="prv"></div>
     <script>
         document.querySelector('#btn').onclick = ()=>{
             fetch("/mark", {
@@ -29,6 +26,7 @@
                 body: JSON.stringify({source: document.querySelector('#area').value}),
                 headers: {'Content-Type': 'application/json'}
             }).then(res => res.json()).then(res => {
+                document.querySelector('#prv').innerHTML = res.result;
                 document.querySelector('#res').textContent = res.result;
                 hljs.highlightAll();
             });
